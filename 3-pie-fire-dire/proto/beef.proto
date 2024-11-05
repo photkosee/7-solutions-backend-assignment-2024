@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package services;
+option go_package="./services";
+
+service BeefService {
+  rpc GetBeef(BeefRequest) returns (BeefResponse);
+}
+
+message BeefRequest {}
+
+message BeefResponse {
+  map<string, int32> beef = 1;
+}
