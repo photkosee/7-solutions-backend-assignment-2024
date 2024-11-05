@@ -97,11 +97,17 @@ go run ./main.go
 }
 ```
 
-### How to run
+### How to run the servers
 ```
 # ./3-pie-fire-dire/server
 go run ./grpcServer
 
 # ./3-pie-fire-dire/client
 go run ./fiberServer
+```
+
+### How to run the test
+```
+# ./3-pie-fire-dire/server
+go test -v
 ```

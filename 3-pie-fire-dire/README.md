@@ -41,3 +41,9 @@ go run ./grpcServer
 # ./3-pie-fire-dire/client
 go run ./fiberServer
 ```
+
+### How to run the test
+```
+# ./3-pie-fire-dire/server
+go test -v
+```
