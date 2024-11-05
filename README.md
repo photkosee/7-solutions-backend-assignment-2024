@@ -1,15 +1,15 @@
 # backend-challenge
 
-## 1. จงหาเส้นทางที่มีค่ามากที่สุด
+## 1. Find the path with the highest value
 
 ![Figure 1-1](files/max-path.png)
 
-- ซึ่งจะอยู่ใน Array ดังต่อไปนี้ `[[59], [73, 41], [52, 40, 53], [26, 53, 6, 34]]`
-- โดยเส้นทางที่มีค่ามากที่สุดจะเป็นตามจุดสีแดง
-- แต่ละ node ห้ามย้อนกลับ (ต้องขึ้นลงเป็นทางเดียว) และเชื่อมกัน
-- คำตอบให้อยู่ในรูปของ จำนวนรวมของเส้นทางที่ผ่าน ซึ่งจากตัวอย่างคือ `237`
+- Which will be in the following array: `[[59], [73, 41], [52, 40, 53], [26, 53, 6, 34]]`
+- The path with the highest value will follow the red points.
+- Each node cannot be revisited (must be a one-way path up or down) and must be connected.
+- The answer should be in the form of the total sum of the path traversed, which in the example is `237`
 
-ให้เขียนโปรแกรมภาษา GO โดยใช้ input จากไฟล์นี้ `./files/hard.json` และแสดงผลเป็นค่าที่ได้จากการคำนวณ
+Write a program in Go using input from this file `./files/hard.json` and display the calculated result.
 
 ### Test case
 
@@ -22,32 +22,32 @@
 go run ./main.go
 ```
 
-## 2. จับฉันให้ได้สิ ซ้าย-ขวา-เท่ากับ
+## 2. Catch me if you can, Left-Right-Equals.
 
-ให้ถอดรหัสตัวอักษรตามตัวอย่างด้านล่าง
+Decode the characters according to the example below:
 
 ```
-สัญลักษณ์ “L” หมายความว่า ตัวเลขด้านซ้าย มีค่ามากกว่า ตัวเลขด้านขวา
-สัญลักษณ์ “R” หมายความว่า ตัวเลขด้านขวา มีค่ามากกว่า ตัวเลขด้านซ้าย
-สัญลักษณ์ “=“ หมายความว่า ตัวเลขด้านซ้าย มีค่าเท่ากับ ตัวเลขด้านขวา
+The symbol “L” means the left number is greater than the right number.
+The symbol “R” means the right number is greater than the left number.
+The symbol “=” means the left and right numbers are equal.
+Example: The sequence of numbers “410233” can be encoded as “LLRR=”.
 
-ตัวอย่างเช่น ตัวเลขชุด “410233“ จะเข้ารหัสได้เป็น “LLRR=“
+Explanation for the sequence “410233”:
+The first pair is 4 and 1 → Left (4) is greater than Right (1) → “L”
+The next pair is 1 and 0 → Left (1) is greater than Right (0) → “L”
+The next pair is 0 and 2 → Left (0) is less than Right (2) → “R”
+The next pair is 2 and 3 → Left (2) is less than Right (3) → “R”
+The next pair is 3 and 3 → Left (3) is equal to Right (3) → “=”
+Thus, “LLRR=” can represent either “410233” or “210122”.
 
-อธิบายเพิ่มเติม จากตัวเลขชุด “410233“
+Sum of digits:
 
-เลขคู่แรกคือ 4 และ 1      => ตัวเลขซ้าย (4) มากกว่า ตัวเลขขวา (1)   => “L“
-เลขคู่ถัดมาคือ 1 และ 0   => ตัวเลขซ้าย (1) มากกว่า ตัวเลขขวา (0)   => “L“
-เลขคู่ถัดมาคือ 0 และ 2   => ตัวเลขซ้าย (0) น้อยกว่า ตัวเลขขวา (2)  => “R“
-เลขคู่ถัดมาคือ 2 และ 3   => ตัวเลขซ้าย (2) น้อยกว่า ตัวเลขขวา (3)  => “R“
-เลขคู่ถัดมาคือ 3 และ 3   => ตัวเลขซ้าย (3) เท่ากับ ตัวเลขขวา (3)  => “=“
-
-“LLRR=” สามารถแปลงได้เป็น “410233” หรือ “210122“ ก็ได้ 
-ผลรวมตัวเลขทุกตัวของ 410233 = 4 + 1 + 0 + 2+. 3 + 3 = 13
-ผลรวมตัวเลขทุกตัวของ 210122 = 2 + 1 + 0 + 1 + 2 + 2  = 8
-คำตอบคือ เลขชุด 210122 เนื่องจาก ผลรวมของทุกตัวเลขมีค่าน้อยที่สุด
+For “410233”: 4 + 1 + 0 + 2 + 3 + 3 = 13
+For “210122”: 2 + 1 + 0 + 1 + 2 + 2 = 8
+The answer is the sequence “210122” because the sum of all digits is the smallest.
 ```
 
-ให้เขียนโปรแกรม ภาษา GO เพื่อรับข้อมูลข้อความที่เข้ารหัสแล้ว จาก keyboard (encoded) และให้แปลงกับเป็นตัวเลขชุด ที่มีผลรวมของทุกตัวเลข มีค่าน้อยที่สุดแสดงผลเป็น ตัวเลขชุด ชุดนั้น
+Write a program in Go to accept an encoded message from the keyboard and convert it into a sequence of numbers that has the smallest sum, displaying that sequence.
 
 ### Test case
 
@@ -62,17 +62,17 @@ go run ./main.go
 go run ./main.go
 ```
 
-## 3. พาย ไฟ ได - Pie Fire Dire  
+## 3. Pie Fire Dire  
 
-โจทย์คือ ให้รายชื่อของเนื้อหลายชนิด ปะปนกันเช่น
+The problem is to list various types of meat mixed together, such as:
 
 ```Fatback t-bone t-bone, pastrami  ..   t-bone.  pork, meatloaf jowl enim.  Bresaola t-bone.```
 
-`ทุกคำเป็นชื่อชนิดเนื้อทั้งหมด` โดยที่ไม่ต้องสนใจ , . หรือ space
+All words represent names of different types of meat, ignoring commas, periods, or spaces.
 
-จงหารายชื่อเนื้อทั้งหมด และระบุจำนวนของเนื้อแต่ละชนิด
+Find all the meat names and specify the count of each type of meat.
 
-ใช้ข้อความจาก <https://baconipsum.com/api/?type=meat-and-filler&paras=99&format=text>
+Use the text from <https://baconipsum.com/api/?type=meat-and-filler&paras=99&format=text>
 
 - Your project must use Go, Go module, and HTTP framework (GRPC is plus)
 - You create a JSON API at this endpoint /beef/summary
